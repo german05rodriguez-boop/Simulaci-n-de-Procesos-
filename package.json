@@ -1,0 +1,27 @@
+{
+  "name": "simulaci-n-de-procesos-",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "vitest run"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/german05rodriguez-boop/Simulaci-n-de-Procesos-.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/german05rodriguez-boop/Simulaci-n-de-Procesos-/issues"
+  },
+  "homepage": "https://github.com/german05rodriguez-boop/Simulaci-n-de-Procesos-#readme",
+  "dependencies": {
+    "typescript": "^7.0.2"
+  },
+  "devDependencies": {
+    "vitest": "^5.0.2"
+  }
+}
