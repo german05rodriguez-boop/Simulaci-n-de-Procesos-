@@ -42,4 +42,36 @@ export class SimuladorSO {
             }
         }
     }
+
+    ejecutar(): void {
+        if (this.procesoActual === null && this.listos.length > 0) {
+            this.procesoActual = this.listos.shift()!;
+            this.procesoActual.estado = EstadoProceso.EJECUTANDO;
+        }
+    }
+
+    avanzarTick(): void {
+        this.reloj++;
+
+        this.asignarMemoria();
+        this.ejecutar();
+
+        if (this.procesoActual !== null) {
+            this.procesoActual.tiempoCPURestante--;
+            this.procesoActual.quantumConsumido++;
+
+            if (this.procesoActual.tiempoCPURestante === 0) {
+                this.procesoActual.estado = EstadoProceso.TERMINADO;
+                this.memoria.liberar(this.procesoActual.pid);
+                this.terminados.push(this.procesoActual);
+                this.procesoActual = null;
+            }
+            else if (this.procesoActual.quantumConsumido === this.quantum) {
+                this.procesoActual.estado = EstadoProceso.LISTO;
+                this.procesoActual.quantumConsumido = 0;
+                this.listos.push(this.procesoActual);
+                this.procesoActual = null;
+            }
+        }
+    }
 }
