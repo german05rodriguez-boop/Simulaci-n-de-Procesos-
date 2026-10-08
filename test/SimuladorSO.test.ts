@@ -35,3 +35,29 @@ describe("SimuladorSO", () => {
     });
 
 });
+
+it("debe devolver el proceso a LISTO cuando termina su quantum", () => {
+
+    const memoria = new AdministradorMemoria(
+        1024,
+        new FirstFit()
+    );
+
+    const simulador = new SimuladorSO(
+        memoria,
+        2
+    );
+
+    const p1 = new Proceso(
+        "P1",
+        200,
+        4
+    );
+
+    simulador.agregarProceso(p1);
+
+    simulador.avanzarTick();
+    simulador.avanzarTick();
+
+    expect(p1.estado).toBe(EstadoProceso.LISTO);
+});
